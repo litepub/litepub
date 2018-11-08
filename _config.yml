@@ -15,3 +15,9 @@ kramdown:
   toc_levels: 2..2
 
 layout: default
+
+defaults:
+  -
+    values:
+      layout: "default"
+      title: ""
