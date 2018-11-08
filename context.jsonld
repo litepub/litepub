@@ -5,6 +5,7 @@
             "Emoji": "toot:Emoji",
             "Hashtag": "as:Hashtag",
             "PropertyValue": "schema:PropertyValue",
+            "atomUri": "ostatus:atomUri",
             "conversation": {
                 "@id": "ostatus:conversation",
                 "@type": "@id"
@@ -14,7 +15,8 @@
             "schema": "http://schema.org#",
             "toot": "http://joinmastodon.org/ns#",
             "totalItems": "as:totalItems",
-            "value": "schema:value"
+            "value": "schema:value",
+            "sensitive": "as:sensitive"
         }
     ]
 }
