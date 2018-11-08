@@ -1,5 +1,4 @@
 ---
-title: "LitePub protocol suite"
 ---
 
 # LitePub protocol suite
