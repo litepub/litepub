@@ -107,7 +107,7 @@ is controlled by the server which publishes the original message.  Accordingly, 
 message which reference another message MUST do so using the message's `id`.  The `id`
 of the message may be treated as a *capability URI*.
 
-When a message is deleted, the URI associated with the message `id` MUST not respond
+When a message is deleted, the URI associated with the message `id` MUST NOT respond
 with the message contents anymore, which does two things:
 
  * prevents further dissemination of the message through the federated graph
