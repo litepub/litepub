@@ -1,7 +1,6 @@
 ---
+title: "LitePub protocol suite"
 ---
-
-# LitePub protocol suite
 
 LitePub is a suite of protocols which provide a federated social network.  They constitute various profiles
 of the [ActivityPub][ap] specification.  It is intended that LitePub implementations provide compatibility
