@@ -14,10 +14,4 @@ collections:
 kramdown:
   toc_levels: 2..2
 
-defaults:
-  -
-    scope:
-      path: ""
-    values:
-      layout: "default"
-      title: ""
+layout: default
