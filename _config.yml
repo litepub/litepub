@@ -1,0 +1,23 @@
+url: "https://litepub.github.io"
+baseurl: "/litepub"
+contribute_url: "https://github.com/litepub/litepub/blob/master/CONTRIBUTING.md"
+
+sass:
+  sass_dir: assets/css
+  style: nested
+  deploy_style: nested
+
+collections:
+  entities:
+    output: true
+
+kramdown:
+  toc_levels: 2..2
+
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"
+      title: ""
