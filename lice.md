@@ -49,10 +49,7 @@ where all implementations transition to having a default security level of
 
 Objects that have been security labeled have a new `capabilities` object that specifies
 what capabilities are implicitly granted or require specific permissions.  Capabilities
-with implicit grants are defined using well-known URIs, such as `as:Public` or
-the `litepub:Followers` endpoint.
-
-> *TODO*: Actually define a `litepub:Followers` endpoint.
+with implicit grants are defined using well-known URIs, such as `as:Public`.
 
 A basic object that has been labeled with a `capabilities` object looks like this:
 
@@ -65,7 +62,7 @@ A basic object that has been labeled with a `capabilities` object looks like thi
   "capabilities": {
     "reply": "https://example.social/caps/d4c4d96a-36d9-4df5-b9da-4b8c74e02567",
     "like": "https://www.w3.org/ns/activitystreams#Public",
-    "announce": "https://litepub.social/ns#Followers"
+    "announce": "https://example.social/caps/e379a28e-74ce-ed7a-928c-7c3a4b2158e4"
   },
   "id": "https://example.social/objects/d6cb8429-4d26-40fc-90ef-a100503afb73",
   "type": "Note",
@@ -74,9 +71,9 @@ A basic object that has been labeled with a `capabilities` object looks like thi
 }
 ```
 
-In this example, `Announce` activities are restricted to followers only, `Like`
-activities are allowed from the public, and `Create.inReplyTo` activities require
-explicit authorization in the form of a proof object.
+In this example, `Like` activities are allowed from the public, `Announce` and
+`Create.inReplyTo` activities require explicit authorization in the form of a
+proof object.
 
 
 ## Optional Specifiers
