@@ -221,6 +221,8 @@ If it is possible to verify the proof using a cryptographic signature, then refe
 the proof object is not necessary.  All implementations MUST support fallback to
 fetching the proof object if a valid signature is not present.
 
+   [lds]: https://w3c-dvcg.github.io/ld-signatures/
+
 
 # Security Considerations
 
