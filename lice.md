@@ -221,6 +221,19 @@ fetching the proof object if a valid signature is not present.
    [lds]: https://w3c-dvcg.github.io/ld-signatures/
 
 
+### Asserting Properties in the Child Object
+
+Proof objects MAY include fragments of the child object being authorized.  In the
+event that a fragment of the child object is included, at least the `id` property
+must be present.
+
+When verifying proof objects that contain fragments of a child object, the verifier
+MUST ensure that the object being authorized against the proof has the same
+properties as present in the proof object.  In the event that the proof object's
+child fragments and the referent object disagree, the verifier MUST fail the
+verification.
+
+
 # Security Considerations
 
 *This section is non-normative.*
@@ -228,6 +241,17 @@ fetching the proof object if a valid signature is not present.
 
 ## Recursive Object Fetching Denial of Service
 
+A malicious proof object could reference itself, either directly or indirectly.
+
 Implementations SHOULD limit the depth to which they fetch referenced activities and
 proof objects.  A valid activity will never have a recursive loop, so the depth limit
 can be very low.
+
+
+## Proof Object/Child Object Swapping
+
+A malicious server could swap the authorized object with a newer version that contains
+content that was not authorized by the granting server.
+
+Implementations SHOULD include key properties of the child object when generating a
+proof object, such as `content`, `name`, `summary` and `attachment`.
