@@ -255,3 +255,15 @@ content that was not authorized by the granting server.
 
 Implementations SHOULD include key properties of the child object when generating a
 proof object, such as `content`, `name`, `summary` and `attachment`.
+
+
+## Fake Direction Spoofing
+
+A malicious server could present a proof object using a third-party domain or third-party
+actor.
+
+Implementations SHOULD verify that the proof object is created by the same actor which
+created the content being interacted with.
+
+Implementations SHOULD verify that the proof object is at the same domain as the object
+being interacted with.
