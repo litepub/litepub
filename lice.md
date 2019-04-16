@@ -90,7 +90,7 @@ way:
   ],
   "capabilities": {
     "reply": {
-      "@id": "https://www.w3.org/ns/activitystreams#Public",
+      "id": "https://www.w3.org/ns/activitystreams#Public",
       "expires": "2019-09-15T12:00:00Z"
     },
     "like": "https://www.w3.org/ns/activitystreams#Public",
