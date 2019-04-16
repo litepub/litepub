@@ -145,6 +145,53 @@ An example proof object looks like this:
 ```
 
 
+### Attestation of Properties in the Referent Object
+
+An `attestations` object contains properties and values that must match the
+properties and values in the referent object.
+
+In the event that an `attestations` object is included, the `id` property
+MUST NOT be present.
+
+When verifying proof objects that contain an `attestations` object, the verifier
+MUST ensure that the object being authorized against the proof has the same
+properties as present in the proof object.  In the event that the proof object's
+child fragments and the referent object disagree, the verifier MUST fail the
+verification.
+
+An example proof object with an `attestations` object:
+
+```
+{
+  "@context": [
+    "https://www.w3.org/ns/activitystreams",
+    "https://litepub.social/litepub/lice-v0.0.1.jsonld"
+  ],
+  "id": "https://example.social/proofs/fa43926a-63e5-4133-9c52-36d5fc6094fa",
+  "type": "Accept",
+  "actor": "https://example.social/users/bob",
+  "object": {
+    "id": "https://example.social/activities/12945622-9ea5-46f9-9005-41c5a2364f9c",
+    "type": "Like",
+    "object": "https://example.social/objects/d6cb8429-4d26-40fc-90ef-a100503afb73",
+    "actor": "https://example.social/users/alyssa",
+    "to": [
+      "https://example.social/users/alyssa/followers",
+      "https://example.social/users/bob"
+    ]
+  }
+  "attestations": {
+    "type": "Like",
+    "object": "https://example.social/objects/d6cb8429-4d26-40fc-90ef-a100503afb73",
+    "to": [
+      "https://example.social/users/alyssa/followers",
+      "https://example.social/users/bob"
+    ]
+  }
+}
+```
+
+
 ## Invocation
 
 When a proof object is required in order to prove an activity is authorized, it MUST be
@@ -221,17 +268,18 @@ fetching the proof object if a valid signature is not present.
    [lds]: https://w3c-dvcg.github.io/ld-signatures/
 
 
-### Asserting Properties in the Child Object
+### Verifying Attestations
 
-Proof objects MAY include fragments of the child object being authorized.  In the
-event that a fragment of the child object is included, at least the `id` property
-must be present.
+*This section is non-normative.*
 
-When verifying proof objects that contain fragments of a child object, the verifier
-MUST ensure that the object being authorized against the proof has the same
-properties as present in the proof object.  In the event that the proof object's
-child fragments and the referent object disagree, the verifier MUST fail the
-verification.
+Implementations MUST check that properties in the `attestations` object match
+properties in the referent object.  In most cases, this is done by doing a
+literal comparison.
+
+When comparing sets (JSON arrays), an implementation SHOULD iterate over the
+values in the attested property and verify set membership in the referent
+property for every value.  As an optimization, an implementation MAY normalize
+a copy of both properties and match that the sequence is identical.
 
 
 # Security Considerations
