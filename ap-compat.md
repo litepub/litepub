@@ -18,7 +18,7 @@ inject a local copy of the LitePub JSON-LD Context instead of the default Activi
 2.0 context when a message is received without a `@context` as it defines the full
 LitePub Core Vocabulary in a way that is useful to JSON-LD processors.
 
-   [litepub-jsonld]: https://litepub.social/litepub/litepub.jsonld
+   [litepub-jsonld]: https://litepub.social/litepub/context.jsonld
 
 
 ## Signatures
