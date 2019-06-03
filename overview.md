@@ -98,25 +98,17 @@ parties.  However, strict adherence to the LitePub core protocol should result i
 implementation which handles messages in a secure manner.
 
 
-### Object Capabilities
+### Inclusion of objects by reference
 
 *This section is non-normative.*
 
 Another important property of LitePub verses ActivityPub is that message data integrity
 is controlled by the server which publishes the original message.  Accordingly, all
 message which reference another message MUST do so using the message's `id`.  The `id`
-of the message may be treated as a *capability URI*.
+of the message may be treated as a *reference*, as in JSON-LD.
 
 When a message is deleted, the URI associated with the message `id` MUST NOT respond
-with the message contents anymore, which does two things:
+and SHOULD respond with an HTTP 404 or equivalent error code.  This does two things:
 
  * prevents further dissemination of the message through the federated graph
  * provides plausible deniability about the existence of a message (spoofing argument)
-
-More information about object capability URIs can be found at these resources:
-
- * [Overview post written by one of the SecondLife server authors][ocap-uri-1].
- * [W3C: Good practices for Capability URLs][ocap-uri-2].
-
-   [ocap-uri-1]: https://mrtopf.de/second-life/slga-capabilities-explained-technical/
-   [ocap-uri-2]: https://www.w3.org/TR/capability-urls/
