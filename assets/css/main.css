@@ -16,3 +16,11 @@ nav {
 .content {
 	flex: 2;
 }
+
+.full-width {
+	width: 100%;
+}
+
+th {
+	text-align: left;
+}

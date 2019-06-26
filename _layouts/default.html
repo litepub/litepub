@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>{{ page_title | strip }}</title>
+		<title>LitePub: {{ page.title | strip }}</title>
 		<link href="{{ site.baseurl }}/assets/css/main.css" rel="stylesheet">
 	</head>
 	<body>
@@ -13,6 +13,10 @@
 		<div class="content">
 			{% if page.title %}
 			<h1>{{ page.title }}</h1>
+			{% endif %}
+
+			{% if page.status %}
+			<h2>{{ page.status }} &mdash; {{ page.last_updated }}</h2>
 			{% endif %}
 
 			{{ content }}
