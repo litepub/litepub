@@ -116,3 +116,37 @@ addressed to `https://www.w3.org/ns/activitystreams#Public`.
 
 Servers SHOULD treat authorized object fetch requests as deliveries
 to the authorized peer and record them as a successful delivery.
+
+
+#### Description of Object Processing Algorithm
+
+*This section is non-normative.*
+
+A possible algorithm for processing objects according to the above
+defined rules would be:
+
+1. Verify the object's `id` is unique and not yet stored in the
+   object graph.
+
+2. Verify that the object's `type` is processable by the
+   LitePub implementation.
+
+3. Iterate over all properties in the object looking for potential
+   children (any property typed as an `id` or any included child
+   objects).
+
+4. For each child object, replace the object with an authoritative
+   local copy of the object.  Fetch new authoritative copies of any
+   missing objects.
+
+5. For all children, return to step 2 with the child object as the
+   processing context.
+
+6. If authoritative versions of any children are missing, reject
+   the root object if transitive child objects are not allowed for
+   the root object's `type`.
+
+7. Apply any required side effects or mutations prescribed by the
+   root object's `type`.
+
+8. Store the root object in the object graph using it's `id`.
